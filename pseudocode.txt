@@ -13,7 +13,7 @@ if on_action_is_pressed(arrow_right):
 
 #writefile logic
 if on_action_is_pressed(key):
-  inputlist.append("key") #appends inputs to a list
+  textfile.append("key") #appends inputs to a list
 if on_action_is_pressed(savebutton):
   os.write("wb"openfile,inputlist)
 
