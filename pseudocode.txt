@@ -1,0 +1,41 @@
+import os
+
+textfile.append(load_opened_file()) #wb for "write binary" or.. write mode.. rb for read binary.. or read mode
+if on_action_is_pressed(arrow_up):
+  move_cursor(up)
+if on_action_is_pressed(arrow_down):
+  move_cursor(down)
+if on_action_is_pressed(arrow_left):
+  move_cursor(left)
+if on_action_is_pressed(arrow_right):
+  move_cursor(right)
+
+#writefile logic
+if on_action_is_pressed(key):
+  inputlist.append("key") #appends inputs to a list
+if on_action_is_pressed(savebutton):
+  os.write("wb"openfile,inputlist)
+
+
+
+#function making
+cursorpositionx,cursorpositiony = 0,0
+load_opened_file = os.read("rb",InputFile)
+def on_action_is_pressed(key):
+  if MagicalPython27ImportToFindKeyboardInputs == keypressed:
+    return true
+  else:
+    pass
+def move_cursor(direction):
+  if direction == left:
+    cursorpositiony +=1
+  if direction == right:
+    cursorpositiony -=1
+  if direction == up:
+    cursorpositionx =+1
+  if direction == up:
+    cursorpositionx -=1
+def setcol(cursorpositionx,cursorpositiony):
+  MagicalPython27ImportToHandleGrid.domagic(cursorpositionx,cursorpositiony) #please god please be matplotlib (likely not)
+
+  
