@@ -2,3 +2,4 @@ a notepad inspired, very simple, lightweight text editor for x86. with the goal 
 linux support.. it will support any kernel or distro where 2.7.0 can run. typically 2.6 era. though mileage may differ depending on distro.
 KEEP IN MIND:
 THE FIRST SEVERAL VERSIONS WILL BE IN THE LATEST VERSIONS OF PYTHON FOR EASE OF PROTOTYPING
+(ps: i use arch, btw)
