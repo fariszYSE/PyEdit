@@ -1,2 +1,4 @@
 a notepad inspired, very simple, lightweight text editor for x86. with the goal of being a simple text editor that can run on any 32 or 64 bit windows or linux machine as old as windows 2000. written in python 2.7.0 (please never ever use 2.7.. its 16 years old.. just use 3.x.x versions and newer. 2.7.0 doesnt even have f strings! what the hell!?)
 linux support.. it will support any kernel or distro where 2.7.0 can run. typically 2.6 era. though mileage may differ depending on distro.
+KEEP IN MIND:
+THE FIRST SEVERAL VERSIONS WILL BE IN THE LATEST VERSIONS OF PYTHON FOR EASE OF PROTOTYPING
