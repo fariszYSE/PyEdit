@@ -1,0 +1,13 @@
+Plugins must:
+
+Use only the official editor plugin API.
+Never access the network.
+Never access files except through the editor's API.
+Never modify, delete, or create files unless the user has explicitly requested that action through the editor.
+Never attempt to bypass or interfere with the editor's security or plugin system.
+Never attempt to run any form of ai because it does not comply with the editor's philosophy, that being very similar to UNIX like systems
+Plugins that violate these rules are considered unsafe and may be blocked from loading.
+
+bullying or harrassment or vulgar text that is forced into text by the plugin is also restricted.
+racist, sexist and discriminatory terms are not permitted as text that can be inserted by a plugin without the user themselves typing the text
+this is a small project, everyone should be kind and caring about other people. if you have nothing nice to say, i invite you not to write a plugin and to find another project to mess around with.
