@@ -20,21 +20,21 @@ def stdin():#read one keypress and set input flags
         elif key == "M":
             righty = True
         elif key == "H":
-            print("Up arrow")
+            print("Up arrow.. rows arent implemented properly yet")
         elif key == "P":
-            print("Down arrow")
+            print("Down arrow.. rows arent implemented properly yet")
     elif key == '\b':
         delete_key_pressed = True
     else:
         line = list(file[0]);line.insert(cursorcol, key);file[0] = "".join(line); cursorcol += 1
-def action_move_r():#consume right arrow input
+def action_move_r():#consume right arrow input.. tastes average
     global righty
     if righty:
         righty = False
         return True
     else:
         pass
-def action_move_l():#consume left arrow input
+def action_move_l():#consume left arrow input.. yummy
     global lefty
     if lefty:
         lefty= False
@@ -42,14 +42,14 @@ def action_move_l():#consume left arrow input
     else: 
         pass  
 stdin()    
-def cursor():#update cursor position
+def cursor():#update cursor position using my super secret spy nasa google faang 10x engineer code
     global testgrid
     global grid
     global cursorcol
     global cursorrow
     grid=[
         1,2,3,
-        4,0,6,#cursor is the 0. imagine it is just one row
+        4,0,6,#cursor is the 0. imagine it is just one row(you dont have to imagine.. i made it in a way that more than 1 row is miserable)
         7,8,9
     ]
     if action_move_l() and cursorcol > 0:#left boundary check
@@ -74,7 +74,6 @@ def check_item_on_left():#inspect/delete the character left of the cursor
         file[0] = "".join(line)
         if cursorcol > 0:
             cursorcol -= 1
-    print(delete_key_pressed)
     delete_key_pressed = False
 """
 the text editors internal format goes like:
