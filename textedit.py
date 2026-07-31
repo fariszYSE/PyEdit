@@ -20,21 +20,21 @@ def stdin():#read one keypress and set input flags
         elif key == "M":
             righty = True
         elif key == "H":
-            print("Up arrow.. rows arent implemented properly yet")
+            print("Up arrow")
         elif key == "P":
-            print("Down arrow.. rows arent implemented properly yet")
+            print("Down arrow")
     elif key == '\b':
         delete_key_pressed = True
     else:
         line = list(file[0]);line.insert(cursorcol, key);file[0] = "".join(line); cursorcol += 1
-def action_move_r():#consume right arrow input.. tastes average
+def action_move_r():#consume right arrow input
     global righty
     if righty:
         righty = False
         return True
     else:
         pass
-def action_move_l():#consume left arrow input.. yummy
+def action_move_l():#consume left arrow input
     global lefty
     if lefty:
         lefty= False
@@ -42,35 +42,38 @@ def action_move_l():#consume left arrow input.. yummy
     else: 
         pass  
 stdin()    
-def cursor():#update cursor position using my super secret spy nasa google faang 10x engineer code
+def cursor():#update cursor position
     global testgrid
     global grid
     global cursorcol
     global cursorrow
     grid=[
         1,2,3,
-        4,0,6,#cursor is the 0. imagine it is just one row(you dont have to imagine.. i made it in a way that more than 1 row is miserable)
+        4,0,6,#cursor is the 0. imagine it is just one row
         7,8,9
     ]
     if action_move_l() and cursorcol > 0:#left boundary check
         cursorcol -= 1; print(cursorcol)
     else:
-        print(cursorcol)   
-    if action_move_r() and cursorcol <= len(testgrid):#right boundary check
+        print(cursorcol)
+    if action_move_r() and cursorcol < len(testgrid):#right boundary check
         cursorcol += 1; print(cursorcol)
     else:
         print(cursorcol)
 def check_item_on_left():#inspect/delete the character left of the cursor
     global delete_key_pressed, cursorcol
-    if cursorcol > 0:
-        print(testgrid[cursorcol - 1])
+    if cursorcol >= 0:
+        print(testgrid)
     elif cursorcol == 0:
         print(testgrid[-1])  
     elif cursorcol == len(testgrid):
         print(testgrid[-1])    
     if delete_key_pressed:
         line = list(file[0])
-        line.pop(cursorcol -1)
+        if line != []:
+            line.pop(cursorcol -1)
+        else:
+            pass    
         file[0] = "".join(line)
         if cursorcol > 0:
             cursorcol -= 1
