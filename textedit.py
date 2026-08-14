@@ -1,18 +1,29 @@
 import os
+import fileio
 import msvcrt
 file = [
-    "hello world!"#<-cursor starts here
+    ""#<-cursor starts here
 ]
 lefty = False
 righty = False
 cursorcol = 0
 cursorrow = 0
 delete_key_pressed = False
-testgrid = [char for item in file for char in item]; print(testgrid) #flatten file into a character list
 tempfile = file
-    #extended key (arrows, function keys, etc.)
+key = ""
+def on_start():
+    global enter_key_pressed,file_name,testgrid
+    enter_key_pressed = False
+    file_name = input("enter the absolute path to the file you want.. or if its in the same directory as the place the code is ran from you just enter the name. enter path here:\n")
+    testgrid = [char for item in file for char in item]; print(testgrid) #flatten file into a character list
+    loop()
+def string_to_list(turnlist):
+    turnlist = [char for item in file for char in item]
+def list_to_string(turnstring):
+     global key,cursorcol,file
+     turnstring = list(file);turnstring.insert(cursorcol, key);file = "".join(turnstring); cursorcol += 1
 def stdin():#read one keypress and set input flags
-    global lefty, righty, delete_key_pressed,cursorcol,cursorrow; key = msvcrt.getwch()
+    global lefty, righty, delete_key_pressed,cursorcol,cursorrow,enter_key_pressed, key,file; key = msvcrt.getwch()
     if key in ("\x00", "\xe0"):#extended key, read the second code
         key = msvcrt.getwch()
         if key == "K":
@@ -25,8 +36,10 @@ def stdin():#read one keypress and set input flags
             print("Down arrow")
     elif key == '\b':
         delete_key_pressed = True
+    elif key == '\r':
+        enter_key_pressed = True
     else:
-        line = list(file[0]);line.insert(cursorcol, key);file[0] = "".join(line); cursorcol += 1
+        line = list(file);line.insert(cursorcol, key);file = "".join(line); cursorcol += 1
 def action_move_r():#consume right arrow input
     global righty
     if righty:
@@ -39,9 +52,7 @@ def action_move_l():#consume left arrow input
     if lefty:
         lefty= False
         return True
-    else: 
-        pass  
-stdin()    
+    else:         pass 
 def cursor():#update cursor position
     global testgrid
     global grid
@@ -61,20 +72,14 @@ def cursor():#update cursor position
     else:
         print(cursorcol)
 def check_item_on_left():#inspect/delete the character left of the cursor
-    global delete_key_pressed, cursorcol
-    if cursorcol >= 0:
-        print(testgrid)
-    elif cursorcol == 0:
-        print(testgrid[-1])  
-    elif cursorcol == len(testgrid):
-        print(testgrid[-1])    
+    global delete_key_pressed,cursorcol,file
     if delete_key_pressed:
-        line = list(file[0])
+        line = list(file)
         if line != []:
             line.pop(cursorcol -1)
+            file = "".join(line)
         else:
-            pass    
-        file[0] = "".join(line)
+            pass
         if cursorcol > 0:
             cursorcol -= 1
     delete_key_pressed = False
@@ -89,9 +94,15 @@ i accidentally designed the whole system around 1 row.. shit
 h|e|l|l|o
 1 2 3 4 5
 """
-while True:#main editor loop
-    stdin()
-    cursor()
-    check_item_on_left()
-    testgrid = [char for item in file for char in item]
-    print(file)
+def loop():
+    global testgrid
+    while True:#main editor loop
+        fileio.readfile()
+        stdin()
+        cursor()
+        check_item_on_left()
+        testgrid = [char for item in file for char in item]
+        fileio.writefile()
+        print(file)
+def testfunc():
+    print("test passed")
