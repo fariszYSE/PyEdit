@@ -4,3 +4,6 @@ a notepad inspired, very simple, lightweight text editor for x86. with the goal 
 
 i give up on making it for windows 2000. python 2.7 is not happening. its python 3 for now and forever. 
 thanks!
+
+edit:
+pseudocode.txt is depricated and does not exactly match what im looking for anymore
